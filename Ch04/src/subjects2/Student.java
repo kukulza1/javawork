@@ -1,6 +1,6 @@
 package subjects2;
 
-import subjects.Subject;
+import arrayList.score.Subject;
 
 public class Student {
 	//필드

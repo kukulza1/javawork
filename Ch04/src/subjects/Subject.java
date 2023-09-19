@@ -6,7 +6,6 @@ public class Subject {
 	private String subjectName; //과목이름
 	private int scorePoint; //과목점수
 	
-	public Subject() {}
 	//getter,setter
 	//과목이름 입력
 	public void setsubjectName(String subjectName) {
@@ -19,7 +18,7 @@ public class Subject {
 	
 	
 	//점수입력
-	public void setScorePoint(int scorePoint) {
+	public void setsubjectName(int scorePoint) {
 		this.scorePoint =scorePoint;
 	}
 	//점수출력

@@ -1,5 +1,7 @@
 package subjects;
 
+import arrayList.score.Subject;
+
 public class Student {
 	//필드
 	int studentId; //학번

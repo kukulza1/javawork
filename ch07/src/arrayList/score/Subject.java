@@ -1,4 +1,4 @@
-package subjects.copy;
+package arrayList.score;
 
 //Subject 자료형 정의
 public class Subject {
@@ -6,8 +6,15 @@ public class Subject {
 	private String subjectName; //과목이름
 	private int scorePoint; //과목점수
 	
+	public Subject() {}
+	
 	//getter,setter
 	//과목이름 입력
+	public Subject(String subjectName,int scorePoint) {
+		this.subjectName = subjectName;
+		this.scorePoint =scorePoint;
+	}
+	
 	public void setsubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
@@ -18,7 +25,7 @@ public class Subject {
 	
 	
 	//점수입력
-	public void setsubjectName(int scorePoint) {
+	public void setScorePoint(int scorePoint) {
 		this.scorePoint =scorePoint;
 	}
 	//점수출력
