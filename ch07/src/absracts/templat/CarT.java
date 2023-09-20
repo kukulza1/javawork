@@ -12,6 +12,10 @@ public class CarT {
 		System.out.println("==============");
 		Car C2 = new AiCar();
 		C2.run();
+		
+		//클래스 테스트
+		//String mm = 
+		//Integer num=100;
 
 	}
 	

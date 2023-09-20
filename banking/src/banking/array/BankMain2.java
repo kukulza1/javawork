@@ -11,6 +11,7 @@ public class BankMain2 {
 	    boolean sw = true;
 	    
 	    while(sw) {
+	    	try {
 	    	System.out.println("======================================");
 	        System.out.println("1.계좌생성 |2.계좌목록 | 3.예금 |4.출금|5.종료");
 	    	System.out.println("======================================");
@@ -32,6 +33,10 @@ public class BankMain2 {
 	    	}else {
 	    		System.out.println("미지원기능입니다 다시하세요.");
 	    	}
+	    	}catch(NumberFormatException e) {
+        		//e.printStackTrace();
+	    		System.out.println("숫자를 입력하세요");
+        	}
 	    }
 	   System.out.println("프로그램을 종료합니다.");
 	    scanner.close();
@@ -137,8 +142,10 @@ public class BankMain2 {
                     }break;
     	            }else {
     	            	System.out.println("결과: 계좌가 없습니다.");
+    	            
+    	            	
     	            }
-    	           
+                	
                     }//while 끝
    
                 	}

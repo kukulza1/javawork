@@ -1,4 +1,4 @@
-package interfaceEx.calculator.remocoon;
+package interfaceEx.calculator.remote;
 
 public interface RemoteControl {
 	public int MAX_VOLUME =10;

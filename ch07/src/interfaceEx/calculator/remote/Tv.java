@@ -1,5 +1,6 @@
-package interfaceEx.calculator.remocoon;
+package interfaceEx.calculator.remote;
 
+//RemoteControl인터페이스를 구현한tv클래스
 public class Tv implements RemoteControl{
 
 	private int volume;
@@ -7,7 +8,7 @@ public class Tv implements RemoteControl{
 	
 	@Override
 	public void turnOn() {
-		System.out.println("TV을켭니다");
+		System.out.println("TV를켭니다");
 		
 	}
 
