@@ -29,6 +29,11 @@ public class BottonT {
 			}
 		});
          b1.touch();
+         
+         //쇼핑 - 구매 구현
+         
+        	 
+        	 
+         }
 	}
 
-}
