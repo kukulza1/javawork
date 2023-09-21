@@ -42,7 +42,7 @@ public class AnimalT2{
 		
 		
 		//Animal(부모)타입으로 객체생성(다형성)-자동형변환
-		/*System.out.println("==========자동형변환=====");
+		System.out.println("==========자동형변환=====");
 		Animal a1 = new Human();
 		Animal a2 = new tiger();
 		
@@ -58,9 +58,9 @@ public class AnimalT2{
 				if(a2 instanceof tiger) {
 					tiger G3 = (tiger)a2; 
 					 G3.hunt();
-	}*/
+	}
             //크기가 3인 Animal 인스턴스를 저장할 배열 생성
-		AnimalT2 animals = new AnimalT2[2];
+		/*AnimalT2 animals = new AnimalT2[2];
 		
 		animals[0]= new Human();
 		animals[1]= new tiger();
@@ -76,7 +76,7 @@ public class AnimalT2{
 			}else {
 				System.out.println("미지원");
 			}
-		}
+		}*/
 		
 		
 }
