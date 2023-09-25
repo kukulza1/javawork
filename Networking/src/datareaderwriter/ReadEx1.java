@@ -14,12 +14,9 @@ public class ReadEx1 {
 					//System.out.println(data);
 					if(data==-1)break;
 					System.out.print((char)data+" ");
-			}
+			   }
 			}catch (IOException e1) {
 			   e1.printStackTrace();
-		        } 
-	
-
-
+} 
 }
 }
