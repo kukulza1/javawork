@@ -16,11 +16,14 @@ public class WriteEx1 {
 			byte a =10;
 			byte b =20;
 			byte c =30;
+			//char d ='가'; 
+			int d = 97; //아스키코드값(문자출력-a)
 			
 			//DB파일에 데이터쓰기
 			os.write(a);
 			os.write(b);
 			os.write(c);
+			os.write(d);
 			
 			
 			os.flush(); //내부 버퍼에 잔류하는 바이트를 출력하고 버퍼를 비움
