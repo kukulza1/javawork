@@ -13,6 +13,7 @@ public class DataINOutputTest {
 
 	public static void main(String[] args) {
 		//정수,실수,문자열쓰기
+		//파일에 쓴순서대로 읽어야함
 		
 		try {
 			//기반스트림

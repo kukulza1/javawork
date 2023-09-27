@@ -2,6 +2,7 @@ package BankingArrList;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import banking.array.Account;
 
@@ -52,9 +53,13 @@ public class ArrLBank {
     	System.out.println("----------------------------");
     	
     	while(true) {
-    	System.out.print("계좌번호:");
-    	String ano=sc.nextLine();
+    	System.out.print("계좌번호(형식00-00-000):");
+    	String ano = sc.nextLine();
     	
+    	String regExp = "\\d{2}-\\d{2}-\\d{3}";
+    	boolean ano2 = Pattern.matches(regExp, ano);
+    		
+    	if(ano2) {
     	//중복계좌 체크
     	if(findAccount(ano) != null) {//중복계좌가 있으면
     		System.out.println("중복 계좌입니다.");
@@ -64,8 +69,7 @@ public class ArrLBank {
     	String owner=sc.nextLine();
     	
     	System.out.print("초기 입금액:");
-    	
-    	
+    		
     	int balance = Integer.parseInt(sc.nextLine());
     	    
     	   //입력받은 내용을 매개변수로 계좌 생성함
@@ -73,7 +77,11 @@ public class ArrLBank {
     	   aList.add(newAccount);//리스트에 저장
     	   System.out.println("결과: 계좌가 개설되었습니다.");
     	   break;
-          }
+    	}
+    	}else {
+    		System.out.println("계좌번호형식이 아닙니다 올바른형식으로 입력해 주세요");
+    	}
+    	
     	}//while끝
 	}//createA끝
 	
@@ -130,8 +138,7 @@ public class ArrLBank {
         	}else if(money>account.getBalance()){
         		System.out.println("잔액이 부족합니다.다시입력하세요");
         		break;
-        		
-        	
+             	
         }else {
         		account.setBalance(account.getBalance()-money);
         		
@@ -144,11 +151,8 @@ public class ArrLBank {
  	
         }
     	
-        }//while 끝
-		
+        }//while 끝	
 	}
-	
-	
 	
 	private static Account findAccount(String ano) {
 		Account account =null;
@@ -164,8 +168,5 @@ public class ArrLBank {
 		}
 		return account;
 	}
-	
-	
-	
-	
+		
 	}

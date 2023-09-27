@@ -19,7 +19,7 @@ public class TypingGame {
           start = System.currentTimeMillis();//시작전시간
           
           
-		while(n < 5) {
+		while(n < 10) {
 		//System.out.println(words.length);
 		int rand=(int)(Math.random()*words.length);
 		
