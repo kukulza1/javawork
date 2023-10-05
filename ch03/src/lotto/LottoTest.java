@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+
 public class LottoTest {
 
 	public static void main(String[] args) {
@@ -35,6 +37,7 @@ public class LottoTest {
 		System.out.println();
 		//파일 이름 출력
 		LottoTest lottoTest = new LottoTest();
+		System.out.println(Arrays.toString(lotto));
 		System.out.println(lottoTest);
 		
 		
