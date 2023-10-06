@@ -16,9 +16,9 @@ public class ArrLBank {
 		    
 		    while(sw) {
 		    	try {
-		    	System.out.println("======================================");
-		        System.out.println("1.계좌생성 |2.계좌목록 | 3.예금 |4.출금|5.종료");
-		    	System.out.println("======================================");
+		    	System.out.println("===========================================================");
+		        System.out.println("1.계좌생성 |2.계좌목록 | 3.예금 |4.출금|5.계좌삭제|6.계좌검색|7.종료");
+		    	System.out.println("==========================================================");
 		    	System.out.print("선택>");
 		    	
 		    	//메뉴선택
@@ -33,7 +33,12 @@ public class ArrLBank {
 		    	}else if(selNo == 4) {
 		    		withdraw();
 		    	}else if(selNo == 5) {
-		    	   	sw = false;
+		    	   	removeAccount();
+		    	   	
+		    	}else if(selNo ==6) {
+		    		searchAccount();
+		    	}else if(selNo ==7){
+		    		sw = false;
 		    	}else {
 		    		System.out.println("미지원기능입니다 다시하세요.");
 		    	}
@@ -47,6 +52,11 @@ public class ArrLBank {
 
 	}//main 끝
 	
+	
+
+	
+
+
 	private static void creatAccount() {
 		System.out.println("----------------------------");
     	System.out.println("계좌 생성");
@@ -153,8 +163,65 @@ public class ArrLBank {
     	
         }//while 끝	
 	}
+    private static void removeAccount() {
 	
+	System.out.println("======================");
+	System.out.println("계좌삭제");
+	System.out.println("======================");
+	System.out.print("계좌번호:");
+	String ano=sc.nextLine();
+   
+	while(true) {
+    
+    if(findAccount(ano) != null){
+    	for(int i=0; i<aList.size();i++) {
+			//이미등록된 계좌를 가져와서 외부에서 입력한 계좌와 일치하는지 비교함
+			String dbano = aList.get(i).getAno();
+			if(dbano.equals(ano)) {
+				Account account =  aList.get(i);
+				aList.remove(account);    //객체로삭제
+						//aList.remove(i); //인덱스로삭제	
+				System.out.println("계좌를삭제했습니다");
+				break;   	
+    }
+		
+    }
+	}else{
+    	System.out.println("결과: 계좌가 없습니다.");
+    }
+    break;
+	}
+    }
+    
+    private static void searchAccount() {
+    	System.out.println("======================");
+    	System.out.println("계좌 검색");
+    	System.out.println("======================");
+    	String ano = sc.nextLine();
+    	while(true) {   	    
+    	    if(findAccount(ano) != null){ 	
+    	for(int i=0; i<aList.size();i++) {
+			//이미등록된 계좌를 가져와서 외부에서 입력한 계좌와 일치하는지 비교함
+			String dbano = aList.get(i).getAno();
+			if(dbano.equals(ano)) {
+				Account ss2 = aList.get(i);
+				System.out.println("계좌를찾았습니다");
+         	System.out.println("계좌:"+ss2.getAno()+"계좌주:"+ss2.getOwner()+"잔액:"+ss2.getBalance());
+			}
+    	    }
+    	break;
+			}else {
+				System.out.println("찾으시는계좌가 없습니다.");
+			}
+			break;
+		
+	}
+    }
+    
+    
+    
 	private static Account findAccount(String ano) {
+		
 		Account account =null;
 		for(int i=0; i<aList.size();i++) {
 			//이미등록된 계좌를 가져와서 외부에서 입력한 계좌와 일치하는지 비교함
