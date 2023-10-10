@@ -33,8 +33,7 @@ public class ArrLBank {
 		    	}else if(selNo == 4) {
 		    		withdraw();
 		    	}else if(selNo == 5) {
-		    	   	removeAccount();
-		    	   	
+		    	   	removeAccount();    	   	
 		    	}else if(selNo ==6) {
 		    		searchAccount();
 		    	}else if(selNo ==7){
