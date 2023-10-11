@@ -32,7 +32,8 @@ public class NewsClient {
 			String news = new String(receivePacket.getData(),
 					0,receivePacket.getLength(),"utf-8");
 			System.out.println(news);
-			    if(news.contains("뉴스10")) break;
+			     
+			    if(news.contains("뉴스10")) break;//뉴스10이 포함된 문자열이 있으면
 			}//while 끝 브레이크 해줘야 에러없음
 			datagramSocket.close();
 			System.out.println("[클라이언트]통신 연결 끊음");
