@@ -44,9 +44,18 @@ public class UserSelectAllTest {
 				//리스트에 user객체를 저장
 				Ulist.add(ss);
 			}
-			for(int i=0;i<Ulist.size();i++) {
+			/*for(int i=0;i<Ulist.size();i++) {
 				User ss= Ulist.get(i);
 				//System.out.println(ss);
+				System.out.println("userId:"+ss.getUserId());
+				System.out.println("userNamess:"+ss.getUserName());
+				System.out.println("userpw:"+ss.getUserPw());
+				System.out.println("userage:"+ss.getUserAge());
+				System.out.println("useremail:"+ss.getUserEmail());
+				System.out.println("==============================");
+				
+			}*/
+			for (User ss : Ulist) {
 				System.out.println("userId:"+ss.getUserId());
 				System.out.println("userNamess:"+ss.getUserName());
 				System.out.println("userpw:"+ss.getUserPw());
