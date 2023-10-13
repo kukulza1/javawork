@@ -2,7 +2,6 @@ package dbcrud;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,11 +27,11 @@ public class BoardInsertTest {
 			   +" VALUES(seq_bno.NEXTVAL,?,?,?,SYSDATE,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			//?값 지정
-			pstmt.setString(1, "NOTEBOOK3");
-			pstmt.setString(2, "LG그램2");
-			pstmt.setString(3, "SKY123");
-			pstmt.setString(4, "notebook.PNG"); //사진을첨부한경우
-			pstmt.setBlob(5, new FileInputStream("src/dbcrud/notebook.PNG"));
+			pstmt.setString(1, "sphone");
+			pstmt.setString(2, "갤럭시입니다");
+			pstmt.setString(3, "cloud");
+			pstmt.setString(4, "phone.png"); //사진을첨부한경우
+			pstmt.setBlob(5, new FileInputStream("src/dbcrud/phone.png"));
 			//pstmt.setString(4, null);
 			//Blob blob = null;
 			//pstmt.setBlob(5, blob);

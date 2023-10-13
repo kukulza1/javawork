@@ -35,7 +35,7 @@ public class BoardSelectTest {
 			String sql ="SELECT*FROM BOARDS where bwriter =?"
 					+ " ORDER BY bno DESC";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,"SKY123");
+			pstmt.setString(1,"cloud");
 		   ResultSet rs = pstmt.executeQuery();
 		   List<Boards> Blist = new ArrayList<>();
 		   while(rs.next()) {
@@ -50,10 +50,13 @@ public class BoardSelectTest {
 			   Blist.add(bs);
 			   //서버 컴퓨터의 하드에 첨부파일을 저장
 			   Blob blob = bs.getBfiledata();
-			   if(blob != null) {InputStream is = blob.getBinaryStream();
+			   if(blob != null) {
+			InputStream is = blob.getBinaryStream();
 			   OutputStream os = new FileOutputStream
 					   ("c:/File/"+bs.getBfilename());
-			   byte[] data = new byte[1024];
+			   
+			   //바이너리 파일 읽고쓰기
+			 /*  byte[] data = new byte[1024];
 			   while(true) {
 				   int num = is.read();
 				   if(num==-1)break;
@@ -61,7 +64,9 @@ public class BoardSelectTest {
 			   }
 			   os.flush();
 			   os.close();
-			   is.close();}
+			   is.close();*/
+			   is.transferTo(os); //바이너리 파일 쓰기(저장)메서드
+			   }
 			   
 		   }
 		

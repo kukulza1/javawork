@@ -15,7 +15,6 @@ public class Boards implements Serializable {
 	private String bfilename;
 	private Blob bfiledata;
 	
-	
 	public int getBno() {
 		return bno;
 	}
