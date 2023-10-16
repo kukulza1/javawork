@@ -19,7 +19,7 @@ public class Main {
 		    	int selNo = Integer.parseInt(sc.nextLine());
 		    	if(selNo == 1) {
 		    		DAO.creatAccount();
-		    	}else if(selNo == 2){
+		    	}else if(selNo == 2) {
 		    		DAO.getAccountList();
 		    	}else if(selNo == 3) {
 		    		DAO.deposit();
@@ -27,9 +27,9 @@ public class Main {
 		    		DAO.withdraw();
 		    	}else if(selNo == 5) {
 		    		DAO.removeAccount();    	   	
-		    	}else if(selNo ==6) {
+		    	}else if(selNo == 6) {
 		    		DAO.searchAccount();
-		    	}else if(selNo ==7){
+		    	}else if(selNo == 7) {
 		    		sw = false;
 		    	}else {
 		    		System.out.println("미지원기능입니다 다시하세요.");
@@ -41,8 +41,5 @@ public class Main {
 		    }
 		   System.out.println("프로그램을 종료합니다.");
 		    sc.close();
-		
-
 	}
-
 }
