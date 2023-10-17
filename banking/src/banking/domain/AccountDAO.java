@@ -121,10 +121,13 @@ public class AccountDAO {
       		pstmt.setInt(1, balance);
       		pstmt.setString(2, ano);
       		pstmt.executeUpdate();
+      		
       		System.out.println("결과: 정상처리되었습니다.");
       	} catch (SQLException e) {
       		e.printStackTrace();
       	}finally {
+      		System.out.println("계좌"+account.getAno()+"계좌주"+
+					account.getOwner()+"잔고"+(account.getBalance()+money));
       		JDBCutil.close(conn, pstmt);
       	}
         }else {
@@ -163,6 +166,8 @@ public class AccountDAO {
         		pstmt.setInt(1, balance);
         		pstmt.setString(2, ano);
         		pstmt.executeUpdate();
+        		System.out.println("계좌"+account.getAno()+"계좌주"+
+    					account.getOwner()+"잔고"+(account.getBalance()-money));
         	} catch (SQLException e) {
         		e.printStackTrace();
         	}finally {
@@ -181,51 +186,49 @@ public class AccountDAO {
 	System.out.println("======================");
 	System.out.println("계좌삭제");
 	System.out.println("======================");
-	System.out.print("계좌번호:");
-	String ano=sc.nextLine();
+	
 	
 	while(true) {
-    if(findAccount(ano) != null){
-    	//db
-	 	   try {
-	 		  conn=JDBCutil.getConnection();
-		 	   String sql = "delete from account where ano =? ";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, ano);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBCutil.close(conn, pstmt);
-		}
-				System.out.println("계좌를삭제했습니다");
-				break;   	
-    
-    
-   
-	}
+		System.out.print("계좌번호:");
+		String ano=sc.nextLine();
+	    if(findAccount(ano) != null){
+	    	
+	    	System.out.println("1삭제, 다른키 삭제취소");
+	    	String check1 = sc.nextLine();
+	    	if(check1.equals("1")) {  
+	    		
+		 	   try {//db
+		 		  conn=JDBCutil.getConnection();
+			 	   String sql = "delete from account where ano =? ";
+    				pstmt = conn.prepareStatement(sql);
+    				pstmt.setString(1, ano);
+    				pstmt.executeUpdate();
+    			} catch (SQLException e) {
+    				e.printStackTrace();
+    			}finally {
+    				JDBCutil.close(conn, pstmt);
+    			}
+		 	  System.out.println("계좌를삭제했습니다");
+			}else {
+				System.out.println("계좌삭제를 취소합니다.");
+			}
+			break;   
+    	}else {
+    	}
+      }
     }
-    }
+    
     public void searchAccount() {
     	System.out.println("======================");
-    	System.out.println("계좌 검색");
+    	System.out.println("검색할계좌를 입력하시오 00-00-000");
     	System.out.println("======================");
-    	String ano = sc.nextLine();
+   // 	String ano = sc.nextLine();
     	while(true) {   	    
-    	    if(findAccount(ano) != null){ 	
-    	//db
-    	    	conn= JDBCutil.getConnection();
-    			String sql ="SELECT * FROM ACCOUNT WHERE ano =?";
-    			try {
-					pstmt =conn.prepareStatement(sql);
-					pstmt.setString(1, ano);
-					rs = pstmt.executeQuery();
-					System.out.println("계좌"+rs.getString("ano")+"계좌주"+
-					rs.getString("owner")+"잔고"+rs.getInt("balance"));
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-    	break;
+    		String ano = sc.nextLine();
+    	    if(findAccount(ano) != null){ 	    	
+    	    	Account ac = findAccount(ano);
+    			System.out.println("계좌"+ac.getAno()+"계좌주"+
+					ac.getOwner()+"잔고"+ac.getBalance());
 			}else {
 				System.out.println("찾으시는계좌가 없습니다.");
 			}
