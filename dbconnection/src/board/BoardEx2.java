@@ -26,14 +26,12 @@ public class BoardEx2 {
 			e.printStackTrace();
 		}
 		}
-	
-	
+		
 	public void list() {
 		System.out.println("[게시글목록]");
 		System.out.println("-------------------------------------------------------------------");
 		System.out.printf("%-4s%-12s%-12s%-12s \n",".no","writer","date","title");
-		System.out.println("--------------------------------------------------------------------");
-		
+		System.out.println("--------------------------------------------------------------------");		
 		try {
 			String sql ="select *from board "+ " order by bno desc" ;
 			pstmt = conn.prepareStatement(sql);
@@ -44,14 +42,14 @@ public class BoardEx2 {
 				bd.setBwriter(rs.getString("bwriter"));
 				bd.setBdate(rs.getDate("bdate"));
 				bd.setBtitle(rs.getString("btitle"));
-				bd.setBcontent(rs.getString("bcontent"));
 				
-				System.out.printf("%-4s%-12s%-12s%-12s%-20s\n",
+				
+				System.out.printf("%-4s%-12s%-12s%-12s\n",
 						bd.getBno(),
 						bd.getBwriter(),
 						bd.getBdate(),
-						bd.getBtitle(),
-				        bd.getBcontent());			
+						bd.getBtitle()
+				       );			
 			}
 			rs.close();
 			pstmt.close();
@@ -90,8 +88,8 @@ public class BoardEx2 {
 		b1.setBwriter(writer);
 		
 		try {
-			String sql ="insert into board (bno,btitle,bcontent,bwriter) "+
-					" values(seq.Nextval,?,?,?)";
+			String sql ="insert into board (bno,btitle,bcontent,bwriter) "
+					+" values(seq.Nextval,?,?,?)";
 			pstmt= conn.prepareStatement(sql);
 			pstmt.setString(1, b1.getBtitle());
 			pstmt.setString(2, b1.getBcontent());
@@ -179,8 +177,7 @@ public class BoardEx2 {
 					update(b1);
 				}else if(menuN.equals("2")) {
 					delete(b1);
-				}
-				
+				}				
 			}
 			rs.close();
 			pstmt.close();
@@ -199,9 +196,18 @@ public class BoardEx2 {
 		if(menuNo.equals("1")) {
 			try {
 				String sql = "truncate table Board";
+				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.executeUpdate();
 				
+				//글번호가 초기화되지않는 문제
+				String sql2 = "drop sequence seq";
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.executeUpdate();
+				
+	            String sql3 ="Create Sequence seq nocache";
+	            pstmt = conn.prepareStatement(sql3);
+	        	pstmt.executeUpdate();
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -221,8 +227,7 @@ public class BoardEx2 {
 		System.out.println("종료");
 		System.exit(0);
 	}
-	
-	
+		
 	public static void main(String[] args) {
 		BoardEx2 b1 = new BoardEx2();
 		b1.list();
