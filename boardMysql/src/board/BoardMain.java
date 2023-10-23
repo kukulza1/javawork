@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class BoardEx2 {
+public class BoardMain {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	//db연결관련변수
-	private String driverClass = "oracle.jdbc.OracleDriver";
-	private String url="jdbc:oracle:thin:@localhost:1521/xe";
-	private String user = "c##mydb";
-	private String userpw = "pwmydb";
+	private String driverClass = "com.mysql.cj.jdbc.Driver";
+	private String url="jdbc:mysql://127.0.0.1:3306/mydb?severtime=Asia/Seoul";
+	private String user = "myuser";
+	private String userpw = "pwmyuser";
 	private	Scanner sc = new Scanner(System.in);
 	
-	public  BoardEx2() {
+	public  BoardMain() {
 		try {
 			Class.forName(driverClass);
 			conn = DriverManager.getConnection(url,user,userpw);
@@ -30,7 +30,7 @@ public class BoardEx2 {
 	public void list() {
 		System.out.println("[게시글목록]");
 		System.out.println("-------------------------------------------------------------------");
-		System.out.printf("%-4s%-12s%-12s%-12s \n",".no","writer","date","title");
+		System.out.printf("%-4s%-12s%-30s%-30s \n",".no","writer","date","title");
 		System.out.println("--------------------------------------------------------------------");		
 		try {
 			String sql ="select *from board "+ " order by bno desc" ;
@@ -40,11 +40,10 @@ public class BoardEx2 {
 				Board bd = new Board();
 				bd.setBno(rs.getInt("bno"));
 				bd.setBwriter(rs.getString("bwriter"));
-				bd.setBdate(rs.getDate("bdate"));
+				bd.setBdate(rs.getTimestamp("bdate"));
 				bd.setBtitle(rs.getString("btitle"));
-				
-				
-				System.out.printf("%-4s%-12s%-12s%-12s\n",
+							
+			    System.out.printf("%-4s%-12s%-30s%-30s\n",
 						bd.getBno(),
 						bd.getBwriter(),
 						bd.getBdate(),
@@ -88,8 +87,8 @@ public class BoardEx2 {
 		b1.setBwriter(writer);
 		
 		try {
-			String sql ="insert into board (bno,btitle,bcontent,bwriter) "
-					+" values(seq.Nextval,?,?,?)";
+			String sql ="insert into board (btitle,bcontent,bwriter) "
+					+" values(?,?,?)";
 			pstmt= conn.prepareStatement(sql);
 			pstmt.setString(1, b1.getBtitle());
 			pstmt.setString(2, b1.getBcontent());
@@ -161,7 +160,7 @@ public class BoardEx2 {
 				b1.setBno(rs.getInt("bno"));
 				b1.setBcontent(rs.getString("bcontent"));
 				b1.setBwriter(rs.getString("bwriter"));
-				b1.setBdate(rs.getDate("bdate"));
+				b1.setBdate(rs.getTimestamp("bdate"));
 				b1.setBtitle(rs.getString("btitle"));
 				
 				System.out.println("=========================");
@@ -171,13 +170,16 @@ public class BoardEx2 {
 				System.out.println("내용:"+b1.getBcontent());
 				System.out.println("날짜:"+b1.getBdate());
 				
-				System.out.println("1.게시글수정,2.삭제");
+				System.out.println("1.게시글수정,2.삭제,3.메인메뉴로돌아가기");
 				String menuN = sc.nextLine();
 				if(menuN.equals("1")) {
 					update(b1);
 				}else if(menuN.equals("2")) {
 					delete(b1);
-				}				
+				}else if(menuN.equals("3")) {
+					rs.close();
+					pstmt.close();
+				}
 			}
 			rs.close();
 			pstmt.close();
@@ -200,14 +202,6 @@ public class BoardEx2 {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.executeUpdate();
 				
-				//글번호가 초기화되지않는 문제
-				String sql2 = "drop sequence seq";
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.executeUpdate();
-				
-	            String sql3 ="Create Sequence seq nocache";
-	            pstmt = conn.prepareStatement(sql3);
-	        	pstmt.executeUpdate();
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -229,7 +223,7 @@ public class BoardEx2 {
 	}
 		
 	public static void main(String[] args) {
-		BoardEx2 b1 = new BoardEx2();
+		BoardMain b1 = new BoardMain();
 		b1.list();
 	}
 }
