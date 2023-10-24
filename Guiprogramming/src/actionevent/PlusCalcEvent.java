@@ -50,54 +50,26 @@ public class PlusCalcEvent {
 		
 		//버튼이벤트--익명객체구현
 		ActionListener listener = new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			    int n1 =Integer.parseInt(text.getText()); // 입력된문자를 숫자로 변환
 				int n2 =Integer.parseInt(text1.getText()); 
 				int sum = n1+n2;
-				text2.setText(String.valueOf(sum));
-							
+				text2.setText(String.valueOf(sum));							
 			}					
-		};
-		
+		};	
 		ActionListener listener2 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {	    	
 				text2.setText("");
 				text1.setText("");
 				text.setText("");
-			}
-			
+			}			
 		};
 		calcBtn.addActionListener(listener);
 		resetBtn.addActionListener(listener2);
 		
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
-
-
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

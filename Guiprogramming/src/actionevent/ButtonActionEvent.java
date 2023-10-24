@@ -27,7 +27,7 @@ public class ButtonActionEvent {
 		
 		//컴포넌트 배치 -borderlayout사용
 		jf.add(text,BorderLayout.CENTER);
-		jb.setPreferredSize(new Dimension(60,30));
+		jb.setPreferredSize(new Dimension(10,10));
 		jf.add(jb,BorderLayout.EAST);
 		jb.setPreferredSize(new Dimension(65,40));
 		jf.add(jl,BorderLayout.SOUTH);

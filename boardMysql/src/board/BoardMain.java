@@ -87,7 +87,7 @@ public class BoardMain {
 		b1.setBwriter(writer);
 		
 		try {
-			String sql ="insert into board (btitle,bcontent,bwriter) "
+			String sql ="insert into board (btitle,bcontent,bwriter)"
 					+" values(?,?,?)";
 			pstmt= conn.prepareStatement(sql);
 			pstmt.setString(1, b1.getBtitle());
@@ -117,7 +117,7 @@ public class BoardMain {
 		b1.setBwriter(writer);
 		
 		try {
-			String sql ="update board set btitle =?,bcontent =?,bwriter=?   " +" where bno =? ";
+			String sql ="update board set btitle =?,bcontent =?,bwriter=? " +" where bno =? ";
 			pstmt =conn.prepareStatement(sql);
 			pstmt.setString(1, b1.getBtitle());
 			pstmt.setString(2, b1.getBcontent());
@@ -197,11 +197,9 @@ public class BoardMain {
 		String menuNo = sc.nextLine();
 		if(menuNo.equals("1")) {
 			try {
-				String sql = "truncate table Board";
-				
+				String sql = "truncate table Board";				
 				pstmt = conn.prepareStatement(sql);
-				pstmt.executeUpdate();
-				
+				pstmt.executeUpdate();				
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
