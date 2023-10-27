@@ -1,6 +1,6 @@
 package subjects;
 
-import arrayList.score.Subject;
+
 
 public class Student {
 	//필드
@@ -14,7 +14,7 @@ public class Student {
     public Student(int studentId, String studentName) {
     	this.studentId = studentId;
     	this.studentName = studentName;
-    	korean = new Subject();//korean 객체 생성
+    	korean = new Subject();// 객체 생성
     	math = new Subject();
     	
     }

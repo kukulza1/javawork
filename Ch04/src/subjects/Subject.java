@@ -25,6 +25,10 @@ public class Subject {
  	public int getScorePoint() {
 		return scorePoint;
 	}
+	public void setScorePoint(int score) {
+		this.scorePoint = score;
+		
+	}
 	
 		
 	}
