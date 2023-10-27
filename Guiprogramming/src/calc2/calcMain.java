@@ -1,10 +1,8 @@
-package calulator;
-
-import calc2.Calc2;
+package calc2;
 
 public class calcMain {
 
 	public static void main(String[] args) {
-		Calc c1 = new Calc();
+		Calc2 c1 = new Calc2();
 	}
 }

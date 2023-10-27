@@ -25,11 +25,11 @@ public class UserinsertTest {
 			   +" VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			//?값 지정
-			pstmt.setString(1, "SKY123");
-			pstmt.setString(2, "최하늘");
-			pstmt.setString(3, "H333");
+			pstmt.setString(1, "admin");
+			pstmt.setString(2, "관리자");
+			pstmt.setString(3, "a111");
 			pstmt.setInt(4, 28);
-			pstmt.setString(5, "SKY123@cloud.com");
+			pstmt.setString(5, "admin123@cloud.com");
 			//sql실행
 			int rows = pstmt.executeUpdate();
 			System.out.println("저장된 행의 수:"+ rows);
