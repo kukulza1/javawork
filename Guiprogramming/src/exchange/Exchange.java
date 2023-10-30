@@ -20,10 +20,10 @@ public class Exchange extends JFrame implements ActionListener{
 	JPanel p2 ;
 	JTextField text;
 	JButton button;
-	static final float usd = 1357.50F;
-	static final float cny = 185.58F;
-	static final float jpy = 9.04F;
-	static final float eur = 1432.43F;
+	static final float usd = 1351.50F;
+	static final float cny = 184.38F;
+	static final float jpy = 903.74F;
+	static final float eur = 1426.91F;
 	public Exchange() {
 		//프레임
 		this.setTitle("환전기");
